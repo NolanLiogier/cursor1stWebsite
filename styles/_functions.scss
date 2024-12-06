@@ -1,0 +1,17 @@
+@function lighten-color($color, $percentage) {
+    @return lighten($color, $percentage);
+}
+
+@function darken-color($color, $percentage) {
+    @return darken($color, $percentage);
+}
+
+// Fluid typography
+@function fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $unit1: unit($min-vw);
+    $unit2: unit($max-vw);
+    $unit3: unit($min-font-size);
+    $unit4: unit($max-font-size);
+    
+    @return calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+} 

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Website</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <div class="header__logo">Logo</div>
+            <div class="header__burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul class="header__menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <h1 class="main__title">Welcome to Our Website</h1>
+        <section class="main__cards reveal">
+            <article class="card">
+                <figure>
+                    <img src="https://picsum.photos/200" alt="Team member 1">
+                </figure>
+                <h3>Card Title 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </article>
+            <article class="card">
+                <figure>
+                    <img src="https://picsum.photos/201" alt="Team member 2">
+                </figure>
+                <h3>Card Title 2</h3>
+                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </article>
+            <article class="card">
+                <figure>
+                    <img src="https://picsum.photos/202" alt="Team member 3">
+                </figure>
+                <h3>Card Title 3</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__content reveal">
+            <div class="footer__section">
+                <h4>About Us</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="footer__section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer__section">
+                <h4>Contact</h4>
+                <p>Email: info@example.com</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add fade-in class to cards
+            document.querySelectorAll('.card').forEach(card => {
+                card.classList.add('stagger-fade-in');
+            });
+
+            // Scroll reveal
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = () => {
+                reveals.forEach(element => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+
+                    if (elementTop < windowHeight - elementVisible) {
+                        element.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Initial check
+        });
+        // Burger menu functionality
+        const burger = document.querySelector('.header__burger');
+        const menu = document.querySelector('.header__menu');
+        
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('active');
+            menu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
